@@ -1,0 +1,213 @@
+{
+  "info": {
+    "name": "AccessAI API",
+    "description": "Complete API collection for AccessAI accessibility platform",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/health",
+          "host": ["{{base_url}}"],
+          "path": ["api", "health"]
+        }
+      }
+    },
+    {
+      "name": "Process Input - Deaf User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"Hello, how are you doing today?\",\n  \"user_type\": \"deaf\",\n  \"language\": \"en\",\n  \"accessibility_preferences\": {\n    \"sign_language_variant\": \"ISL\",\n    \"font_size\": 16,\n    \"high_contrast\": false,\n    \"bionic_reading\": false,\n    \"reading_speed\": 1.0\n  }\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/process-input",
+          "host": ["{{base_url}}"],
+          "path": ["api", "process-input"]
+        }
+      }
+    },
+    {
+      "name": "Process Input - Emergency",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"I need emergency medical help\",\n  \"user_type\": \"speech\",\n  \"language\": \"en\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/process-input",
+          "host": ["{{base_url}}"],
+          "path": ["api", "process-input"]
+        }
+      }
+    },
+    {
+      "name": "Text to Speech",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"Please help me, I need medical assistance\",\n  \"language\": \"en\",\n  \"gender\": \"female\",\n  \"speed\": 1.0,\n  \"format\": \"mp3\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/text-to-speech",
+          "host": ["{{base_url}}"],
+          "path": ["api", "text-to-speech"]
+        }
+      }
+    },
+    {
+      "name": "Translate Text",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"Climate change is affecting our planet\",\n  \"source_language\": \"en\",\n  \"target_languages\": [\"hi\", \"es\", \"ta\", \"zh\"],\n  \"include_audio\": true\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/translate",
+          "host": ["{{base_url}}"],
+          "path": ["api", "translate"]
+        }
+      }
+    },
+    {
+      "name": "Sample Queries",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/sample-queries",
+          "host": ["{{base_url}}"],
+          "path": ["api", "sample-queries"]
+        }
+      }
+    },
+    {
+      "name": "Sign Language Vocabulary - All",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/sign-language/vocabulary?variant=ISL&limit=10",
+          "host": ["{{base_url}}"],
+          "path": ["api", "sign-language", "vocabulary"],
+          "query": [
+            {
+              "key": "variant",
+              "value": "ISL"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Sign Language Vocabulary - Greetings",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/sign-language/vocabulary?variant=ISL&category=greetings",
+          "host": ["{{base_url}}"],
+          "path": ["api", "sign-language", "vocabulary"],
+          "query": [
+            {
+              "key": "variant",
+              "value": "ISL"
+            },
+            {
+              "key": "category",
+              "value": "greetings"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Dyslexia Format",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"Photosynthesis is the process by which plants convert light energy\",\n  \"preferences\": {\n    \"font_size\": 16,\n    \"show_syllables\": true,\n    \"show_pos_colors\": true,\n    \"bionic_reading\": false,\n    \"line_height\": 1.8,\n    \"letter_spacing\": 0.15\n  }\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/dyslexia/format",
+          "host": ["{{base_url}}"],
+          "path": ["api", "dyslexia", "format"]
+        }
+      }
+    },
+    {
+      "name": "Get Languages",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/languages",
+          "host": ["{{base_url}}"],
+          "path": ["api", "languages"]
+        }
+      }
+    },
+    {
+      "name": "Accessibility Statement",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/accessibility-statement",
+          "host": ["{{base_url}}"],
+          "path": ["api", "accessibility-statement"]
+        }
+      }
+    }
+  ]
+}
